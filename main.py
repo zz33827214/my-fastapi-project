@@ -22,6 +22,11 @@ def get_access_token():
     except requests.exceptions.RequestException as e:
         raise HTTPException(status_code=500, detail=f"獲取 Token 失敗: {e}")
 
+# 新增根路由
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the THSR timetable API!"}
+
 # API 端點：取得高鐵時刻表
 @app.get("/thsr_timetable")
 def thsr_timetable():
